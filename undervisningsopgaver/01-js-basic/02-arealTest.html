@@ -9,20 +9,21 @@
 
 <body>
     <script>
-        let længde = 30;
-        let bredde = 50;
+        let længde = 5;
+        let bredde = 20;
         let areal = længde * bredde;
+        let resultat;
 
         if (areal < 100) {
-            let resultat = "Arealet er for lille";
+            resultat = "Arealet er for lille";
         }
 
         if (areal >= 100 && areal < 200) {
-            let resultat = "Arealet er ok";
+            resultat = "Arealet er ok";
         }
 
         if (areal >= 200) {
-            let resultat = "Arealet er for stort";
+            resultat = "Arealet er for stort";
         }
 
         console.log(resultat);
