@@ -35,12 +35,29 @@
             fedmeklasse = ("ekstremt fed");
         }
 
-        let bmiresultat = confirm(`Din BMI tal er ${bmi}. Vil du vide din vægtklasse?`);
 
-        if (bmiresultat == true) {
-            alert(`Din vægtklasse er ${fedmeklasse}`);
+        if (weight == 0) {
+            alert(`Husk at vægt skal indeholde tal. \n Prøv igen`);
+        }
+        if (height == 0) {
+            alert(`Husk at højde skal indeholde tal. \n Prøv igen`);
+            if (confirm) {
+                location.reload();
+            }
+        } else if (isNaN(bmi)) {
+            alert(`Fejl. \n Skriv kun tal`);
+            if (confirm) {
+                location.reload();
+            }
         } else {
-            alert(`Ok. Tak for nu!`);
+            let bmiresultat = confirm(`Din BMI tal er ${bmi}. Vil du vide din vægtklasse?`);
+
+
+            if (bmiresultat == true) {
+                alert(`Din vægtklasse er ${fedmeklasse}`);
+            } else {
+                alert(`Ok. Tak for nu!`);
+            }
         }
     </script>
 </body>
