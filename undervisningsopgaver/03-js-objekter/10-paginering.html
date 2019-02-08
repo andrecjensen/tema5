@@ -19,42 +19,64 @@
     <div>
     </div>
 
-    <script>
-        let alleDyr = [{
-                "navn": "gris",
-                "type": "pattedyr",
-                "billede": "http://helf-kea.dk/test/gris.png",
-                "levested": "svinefarme"
-            },
-            {
-                "navn": "frø",
-                "type": "paddedyr",
-                "billede": "http://helf-kea.dk/test/frog.png",
-                "levested": "søer"
-            },
-            {
-                "navn": "ræv",
-                "type": "rovdyr",
-                "billede": "http://helf-kea.dk/test/fox.png",
-                "levested": "skove"
-            },
-            {
-                "navn": "sild",
-                "type": "fisk",
-                "billede": "http://helf-kea.dk/test/sild.jpg",
-                "levested": "havet"
-            },
-            {
-                "navn": "krokodille",
-                "type": "reptil",
-                "billede": "http://helf-kea.dk/test/kroko.jpg",
-                "levested": "sumpe"
-            }
-        ];
+    <button id="next"> -> </button>
 
+    <script>
         document.addEventListener("DOMContentLoaded", start);
 
         function start() {
+
+            let alleDyr = [{
+                    "navn": "gris",
+                    "type": "pattedyr",
+                    "billede": "http://helf-kea.dk/test/gris.png",
+                    "levested": "svinefarme"
+                },
+                {
+                    "navn": "frø",
+                    "type": "paddedyr",
+                    "billede": "http://helf-kea.dk/test/frog.png",
+                    "levested": "søer"
+                },
+                {
+                    "navn": "ræv",
+                    "type": "rovdyr",
+                    "billede": "http://helf-kea.dk/test/fox.png",
+                    "levested": "skove"
+                },
+                {
+                    "navn": "sild",
+                    "type": "fisk",
+                    "billede": "http://helf-kea.dk/test/sild.jpg",
+                    "levested": "havet"
+                },
+                {
+                    "navn": "krokodille",
+                    "type": "reptil",
+                    "billede": "http://helf-kea.dk/test/kroko.jpg",
+                    "levested": "sumpe"
+                }
+            ];
+
+            let first = 1;
+            let step = 2
+            let last = step;
+
+            document.querySelector("#next").addEventListener("click", fremad);
+
+            function fremad() {
+                if (last >= alleDyr.length) {
+                    first = 1;
+                    last = step;
+                } else {
+                    first += step;
+                    last += step;
+                }
+                visDyr();
+            }
+
+
+
 
             let destination = document.querySelector("div");
 
