@@ -82,10 +82,23 @@
 
             }
         }
+
+        .valgt {
+            background-color: cadetblue;
+            font-weight: 700;
+        }
     </style>
 </head>
 
 <body>
+
+    <div>
+        <button class="filter valgt" data-hold="alle">Alle</button>
+        <button class="filter" data-hold="a">Hold A</button>
+        <button class="filter" data-hold="b">Hold B</button>
+
+    </div>
+
 
     <div class="grid-container">
     </div>
@@ -94,6 +107,7 @@
         document.addEventListener("DOMContentLoaded", hentJson);
 
         let allePersoner;
+        let filter = "alle";
 
         async function hentJson() {
 
@@ -109,7 +123,9 @@
             const modtager = document.querySelector("div");
 
             allePersoner.forEach(person => {
-                modtager.innerHTML += `<div class="person_box"><h2>${person.navn}</h2><img src="${person.billede}"><p><a href="https://github.com/${person.github}" target="_blank">Link til GitHub</a></p></div>`;
+                if (filter == "alle" || person.hold == filter) {
+                    modtager.innerHTML += `<div class="person_box"><h2>${person.navn}</h2><img src="${person.billede}"><p><a href="https://github.com/${person.github}" target="_blank">Link til GitHub</a></p><p>Hold: ${person.hold}</p></div>`;
+                }
             })
         }
     </script>
