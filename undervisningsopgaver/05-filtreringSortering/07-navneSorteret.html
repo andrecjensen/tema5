@@ -151,13 +151,13 @@
 
                 allePersoner = await jsonData.json();
 
-                allePersoner.sort((a, b) => {
-                    return (a.alder - b.alder);
-                });
-
                 //                allePersoner.sort((a, b) => {
-                //                    return a.navn.localeCompare(b.navn);
+                //                    return (a.alder - b.alder);
                 //                });
+
+                allePersoner.sort((a, b) => {
+                    return a.navn.localeCompare(b.navn);
+                });
 
 
                 visPersoner();
