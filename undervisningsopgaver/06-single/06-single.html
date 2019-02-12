@@ -68,8 +68,6 @@
 
             padding: 15px;
 
-            cursor: pointer;
-
         }
 
         .person_box:hover {
@@ -128,14 +126,10 @@
             font-weight: 700;
         }
 
-        #popup {
-            top: 0px;
+        #single {
             width: 100vw;
             height: 100vh;
-            position: fixed;
             background-color: rgba(135, 189, 222, 0.37);
-            display: none;
-            overflow: scroll;
         }
 
         #indhold {
@@ -145,38 +139,23 @@
             margin: 4rem auto;
         }
 
-        #luk {
-            position: fixed;
-            right: 2rem;
-            padding-right: 2rem;
-            padding-top: 2rem;
-        }
+        #luk {}
 
         #luk button {
             font-size: 1rem;
             padding: 0.8rem 1rem;
+            text-transform: uppercase;
         }
     </style>
 </head>
 
 <body>
-    <div id="popup">
+    <main id="single" class="skjult">
         <div id="luk">
-            <button> X </button>
+            <button> tilbage </button>
         </div>
-        <div id="indhold"></div>
-    </div>
-    <h1>Alle</h1>
-    <div class="menu">
-        <button class="filter valgt" data-hold="alle">Alle</button>
-        <button class="filter" data-hold="a">Hold A</button>
-        <button class="filter" data-hold="b">Hold B</button>
-
-    </div>
-
-
-    <div class="grid-container">
-    </div>
+        <section id="indhold"></section>
+    </main>
 
     <script>
         let allePersoner = [];
@@ -210,14 +189,9 @@
                         modtager.lastElementChild.addEventListener("click", visSingle);
 
                         function visSingle() {
-                            document.querySelector("#indhold").innerHTML = `<article><p class="hold">${person.hold}</p><h2>${person.navn}</h2><img src="${person.billede}"><p><a href="https://github.com/${person.github}" target="_blank">Link til GitHub</a></p></article>`;
+                            document.querySelector("#indhold").innerHTML = `<article class="person_box"><p class="hold">${person.hold}</p><h2>${person.navn}</h2><img src="${person.billede}"><p><a href="https://github.com/${person.github}" target="_blank">Link til GitHub</a></p></article>`;
 
                             document.querySelector("#popup").style.display = "block";
-                            document.querySelector("#popup #luk").addEventListener("click", close);
-                        }
-
-                        function close() {
-                            document.querySelector("#popup").style.display = "none";
                         }
                     }
                 })

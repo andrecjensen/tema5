@@ -127,45 +127,11 @@
             background-color: cadetblue;
             font-weight: 700;
         }
-
-        #popup {
-            top: 0px;
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
-            background-color: rgba(135, 189, 222, 0.37);
-            display: none;
-            overflow: scroll;
-        }
-
-        #indhold {
-            min-height: 50vh;
-            width: 70vw;
-            background-color: #a1bbc9;
-            margin: 4rem auto;
-        }
-
-        #luk {
-            position: fixed;
-            right: 2rem;
-            padding-right: 2rem;
-            padding-top: 2rem;
-        }
-
-        #luk button {
-            font-size: 1rem;
-            padding: 0.8rem 1rem;
-        }
     </style>
 </head>
 
 <body>
-    <div id="popup">
-        <div id="luk">
-            <button> X </button>
-        </div>
-        <div id="indhold"></div>
-    </div>
+
     <h1>Alle</h1>
     <div class="menu">
         <button class="filter valgt" data-hold="alle">Alle</button>
@@ -207,18 +173,9 @@
 <article class="person_box"><p class="hold">${person.hold}</p><h2>${person.navn}</h2><img src="${person.billede}"><p><a href="https://github.com/${person.github}" target="_blank">Link til GitHub</a></p></article>
 `;
                         modtager.insertAdjacentHTML("beforeend", template);
-                        modtager.lastElementChild.addEventListener("click", visSingle);
-
-                        function visSingle() {
-                            document.querySelector("#indhold").innerHTML = `<article><p class="hold">${person.hold}</p><h2>${person.navn}</h2><img src="${person.billede}"><p><a href="https://github.com/${person.github}" target="_blank">Link til GitHub</a></p></article>`;
-
-                            document.querySelector("#popup").style.display = "block";
-                            document.querySelector("#popup #luk").addEventListener("click", close);
-                        }
-
-                        function close() {
-                            document.querySelector("#popup").style.display = "none";
-                        }
+                        modtager.lastElementChild.addEventListener("click", () => {
+                            location.href = "07-singleview.html?github=" + person.github;
+                        });
                     }
                 })
             } // function visPersoner slutter

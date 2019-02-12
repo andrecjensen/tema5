@@ -91,6 +91,8 @@
 
             transition-duration: 0.5s;
 
+            overflow: scroll;
+
         }
 
         .ret_box:hover {
@@ -206,10 +208,81 @@
             background-color: #ff2020;
             transition-duration: 0.5s;
         }
+
+        #popup {
+            top: 0px;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            background-color: rgba(255, 0, 0, 0.08);
+            display: none;
+            overflow: scroll;
+        }
+
+        #indhold {
+            min-height: 50vh;
+            width: 70vw;
+            background-color: #ffffff;
+            border: solid;
+            border-width: 1px;
+            border-color: rgba(255, 0, 0, 0.42);
+            margin: 4rem auto;
+        }
+
+        #indhold h2 {
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 20pt;
+        }
+
+        #indhold p {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .pris {
+            display: block;
+            position: static;
+            background-color: #ff2020;
+            width: 100px;
+            height: 30px;
+            border-radius: 15px;
+            top: 100px;
+        }
+
+        .pris p {
+            line-height: 30px;
+            color: white;
+        }
+
+
+        #luk {
+            position: absolute;
+            right: 2rem;
+            padding-right: 2rem;
+            padding-top: 4rem;
+        }
+
+        #luk button {
+            color: white;
+            background-color: rgba(255, 0, 0, 0.42);
+            border: none;
+            border-radius: 0px;
+            font-size: 1rem;
+            padding: 0.8rem 1rem;
+        }
+
+        .ret_popup {}
     </style>
 </head>
 
 <body>
+    <div id="popup" class="skjult">
+        <div id="luk">
+            <button>X</button>
+        </div>
+        <div id="indhold"></div>
+    </div>
     <div class="cover">
         <h1>Bistro Babushka</h1>
     </div>
@@ -255,7 +328,21 @@
 
                 alleRetter.forEach(ret => {
                     if (filter == "alle" || filter == ret.kategori) {
-                        modtager.innerHTML += `<div class="ret_box"><div class="kategori-boks"><p>${ret.kategori}</p></div><img src="imgs/small/${ret.billede}-sm.jpg" alt="${ret.navn}"><h2>${ret.navn}</h2><p>${ret.kort}<br></p></div>`;
+                        let template = `<div class="ret_box"><div class="kategori-boks"><p>${ret.kategori}</p></div><img src="imgs/small/${ret.billede}-sm.jpg" alt="${ret.navn}"><h2>${ret.navn}</h2><p>${ret.kort}<br></p></div>`;
+
+                        modtager.insertAdjacentHTML("beforeend", template);
+                        modtager.lastElementChild.addEventListener("click", visSingle);
+
+                        function visSingle() {
+                            document.querySelector("#indhold").innerHTML = `<div class="ret_popup"><h2>${ret.navn}</h2><p>Oprindelse: ${ret.oprindelse}.</p><div class="pris"><p>Pris ${ret.pris}</p></div><img src="imgs/large/${ret.billede}.jpg" alt="${ret.navn}"><p>${ret.lang}</p></div>`;
+
+                            document.querySelector("#popup").style.display = "block";
+                            document.querySelector("#popup #luk").addEventListener("click", close);
+                        }
+
+                        function close() {
+                            document.querySelector("#popup").style.display = "none";
+                        }
                     }
                 })
             } // funktion visRetter slutter
