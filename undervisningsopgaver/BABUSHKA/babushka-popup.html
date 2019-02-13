@@ -242,12 +242,13 @@
 
         .pris {
             display: block;
-            position: static;
+            position: relative;
             background-color: #ff2020;
             width: 100px;
             height: 30px;
             border-radius: 15px;
-            top: 100px;
+            top: 15px;
+            left: 58vw;
         }
 
         .pris p {
@@ -272,7 +273,76 @@
             padding: 0.8rem 1rem;
         }
 
-        .ret_popup {}
+        @media only screen and (max-width: 1050px) {
+            .container {
+                margin-bottom: 0px;
+            }
+
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            .pris {
+                left: 52vw;
+            }
+
+            #luk {
+
+                right: 2rem;
+                padding-right: 0;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+
+            .container {
+                margin-bottom: 0px;
+            }
+
+            .grid-container {
+                grid-template-columns: repeat(1, 1fr);
+
+            }
+
+            .cover {
+                background-color: #ff2020;
+                background-image: url(media/russianarchitechture.jpg);
+                background-blend-mode: screen;
+                background-size: 120%;
+                background-repeat: no-repeat;
+
+            }
+
+            .cover h1 {
+                font-family: 'Russo One', sans-serif;
+                font-size: 35px;
+                color: #000000;
+                letter-spacing: 5px;
+                text-align: center;
+                text-transform: uppercase;
+                line-height: 40px;
+                padding-top: 110px;
+            }
+
+            #indhold {
+                width: 90vw;
+            }
+
+            .pris {
+                left: 62vw;
+            }
+
+            #luk {
+
+                right: 2rem;
+                padding-right: 0;
+                padding-top: 1rem;
+            }
+        }
     </style>
 </head>
 
@@ -290,7 +360,7 @@
         <div class="topwrapper">
             <h3>Alle</h3>
             <div class="menu">
-                <button class="filter valgt" data-kategori="alle">Alle</button>
+                <button class="filter valgt" data-kategori="alle">Alle retter</button>
                 <button class="filter" data-kategori="forretter">Forretter</button>
                 <button class="filter" data-kategori="hovedretter">Hovedretter</button>
                 <button class="filter" data-kategori="desserter">Desserter</button>
@@ -334,7 +404,7 @@
                         modtager.lastElementChild.addEventListener("click", visSingle);
 
                         function visSingle() {
-                            document.querySelector("#indhold").innerHTML = `<div class="ret_popup"><h2>${ret.navn}</h2><p>Oprindelse: ${ret.oprindelse}.</p><div class="pris"><p>Pris ${ret.pris}</p></div><img src="imgs/large/${ret.billede}.jpg" alt="${ret.navn}"><p>${ret.lang}</p></div>`;
+                            document.querySelector("#indhold").innerHTML = `<div class="ret_popup"><h2>${ret.navn}</h2><p>Oprindelse: ${ret.oprindelse}.</p><div class="pris"><p><b>Pris ${ret.pris},-</b></p></div><img src="imgs/large/${ret.billede}.jpg" alt="${ret.navn}"><p>${ret.lang}</p></div>`;
 
                             document.querySelector("#popup").style.display = "block";
                             document.querySelector("#popup #luk").addEventListener("click", close);
