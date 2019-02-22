@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Poco</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Luckiest+Guy" rel="stylesheet">
+</head>
+
+<style>
+    :root {
+        --main-blue: #005ACF;
+    }
+
+    body {
+        margin: auto;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    h1 {
+        font-family: 'Luckiest Guy', cursive;
+        letter-spacing: 3px;
+        text-align: center;
+        vertical-align: middle;
+        color: white;
+        font-size: 20pt;
+        height: 200px;
+        width: 100%;
+        margin: 0px;
+        line-height: 200px;
+
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    h2 {
+        font-family: 'Lato', sans-serif;
+    }
+
+    p {
+        font-family: 'Lato', sans-serif;
+        font-size: 10pt;
+        color: #272727;
+    }
+
+    #cover {
+        width: 100vw;
+        height: 126px;
+        background-color: var(--main-blue);
+        background-image: url(logo/a_poco-logo-long-white.svg);
+        background-size: 60vw;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    /*    Holder på alt indhold */
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        margin-bottom: 25px;
+    }
+
+    /*    Styrer topdelen */
+
+    #topwrapper {}
+
+    /* MENU */
+    #menu {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    #menu button {
+        border: solid;
+        border-width: 0.1px;
+        border-color: #f4f4f4;
+        height: 50px;
+        color: #ff2020;
+        cursor: pointer;
+        margin: 0;
+        padding: 10px 5px;
+        transition-duration: 0.5s;
+
+        font-family: 'Lato', sans-serif;
+        letter-spacing: 0.4pt;
+    }
+
+    #menu button:hover {
+        color: white;
+        background-color: #ff2020;
+        border: solid;
+        border-width: 0.1px;
+        border-color: #ff2020;
+        transition-duration: 0.5s;
+    }
+
+    #menu .valgt {
+        color: white;
+        background-color: #ff2020;
+        border: solid;
+        border-width: 0.1px;
+        border-color: #ff2020;
+        transition-duration: 0.5s;
+    }
+
+    .category_title h1 {
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* Menu slut */
+
+
+
+    /*    Start på indhold */
+    .contentcontainer {
+        padding: 16px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .course_box {
+        display: flex;
+        flex-wrap: nowrap;
+        cursor: pointer;
+        transition-duration: 0.5s;
+        padding: 20px 16px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-left: -16px;
+        margin-right: -16px;
+
+        border-top: solid;
+        border-width: 0.5px;
+        border-color: #EDEDED;
+    }
+
+    .course_box h2 {
+        margin: 0;
+        font-size: 14pt;
+    }
+
+    .course_box p {
+        margin: 0;
+        font-size: 10pt;
+    }
+
+    .course_box:hover {
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.13);
+
+    }
+
+    .courseimage {
+        margin-bottom: -4px;
+    }
+
+    .courseimage img {
+        width: 140px;
+        margin-right: 15px;
+        border-radius: 5px;
+
+    }
+
+    .coursecontent {}
+
+    /*    Indstillinger til pop up */
+
+    #popup {
+        top: 0px;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.24);
+        display: none;
+        overflow: scroll;
+        z-index: 1;
+    }
+
+    #indhold {
+        min-height: 80vh;
+        width: 90vw;
+        background-color: #ffffff;
+        margin: 4rem auto;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.31);
+    }
+
+    #indhold h2 {
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: 20pt;
+
+    }
+
+    #indhold p {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    #luk {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+
+    #luk button {
+        color: #005ACF;
+        background-color: #005ACF;
+        border: none;
+        font-weight: 700;
+        border-radius: 0px;
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+
+        font-family: 'Lato', sans-serif;
+        letter-spacing: 0.4pt;
+
+        cursor: pointer;
+    }
+
+    #course_popup {}
+
+    #pris {}
+
+    /*    Slut på indstillinger til pop up */
+    /*    Start på media-query indstillinger */
+
+    @media only screen and (min-width: 600px) {
+        #cover {
+            height: 180px;
+            background-size: 50vw;
+        }
+
+        #menu button {
+            height: 40px;
+        }
+
+        h1 {
+            font-size: 35pt;
+        }
+
+
+    }
+
+    @media only screen and (min-width: 800px) {
+        #cover {
+            height: 20vw;
+            background-image: url(logo/a_poco-logo-white.svg);
+            background-size: 17vw;
+        }
+
+        #topwrapper {
+            margin-top: -15px;
+            background-color: white;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.41);
+        }
+
+        #menu {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+        }
+
+        #menu button {
+            height: 40px;
+        }
+
+        .contentcontainer {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .explainer {
+            padding-left: 16px;
+        }
+
+        .grid-container {
+            grid-template-columns: repeat(2, 1fr);
+
+        }
+
+        .border {
+            border-top: solid;
+            border-width: 0.5px;
+            border-color: #EDEDED;
+
+        }
+
+        .course_box {
+
+            margin-left: 0;
+            margin-right: 0;
+            border: none;
+
+            border-radius: 5px;
+        }
+    }
+
+
+    /* BOTTOM BORDER */
+    #bottomborder {
+        display: flex;
+        flex-wrap: nowrap;
+        height: 9px;
+        width: 100%;
+        position: sticky;
+        bottom: 0;
+    }
+
+    #bottomborder div {
+        width: 100%;
+    }
+
+    #bottomborder div:nth-child(1) {
+        background-color: #005ACF;
+    }
+
+    #bottomborder div:nth-child(2) {
+        background-color: #004FB5;
+    }
+
+    #bottomborder div:nth-child(3) {
+        background-color: #005FDC;
+    }
+
+    #bottomborder div:nth-child(4) {
+        background-color: #002250;
+    }
+
+    #bottomborder div:nth-child(5) {
+        background-color: #003D8F;
+    }
+</style>
+
+<body>
+    <div id="popup">
+        <div id="indhold">
+            <div id="luk">
+                <button>X</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="cover">
+        <!-- A POCO COVER -->
+    </div>
+
+    <div class="container">
+        <div id="topwrapper">
+            <div id="menu">
+                <button class="filter valgt" data-category="all" data-jpg="ALL">ALL COURSES</button>
+                <button class="filter" data-category="PLATOS PEQUENOS" data-jpg="PEQUENOS">
+                    PLATOS PEQUENOS</button>
+                <button class="filter" data-category="CEVICHERIA" data-jpg="CEVICHERIA">CEVICHERIA</button>
+                <button class="filter" data-category="TACO Y TOSTADAS" data-jpg="TACO">TACO Y TOSTADAS</button>
+                <button class="filter" data-category="PLATOS DE FONDO" data-jpg="FONDO">PLATOS DE FONDO</button>
+                <button class="filter" data-category="CERVEZA Y MARGARITAS" data-jpg="CERVEZA">CERVEZA Y MARGARITAS</button>
+            </div>
+            <div class="category_title">
+                <h1 style="background-image: url(img/mobile/ALL.jpg);">ALL COURSES</h1>
+
+            </div>
+        </div>
+        <div class="contentcontainer">
+            <div class="explainer">
+                <h2>Lidt om hvad det er</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, minus quibusdam tempore saepe magnam voluptatum molestiae nulla deserunt temporibus, corporis maxime at consectetur eaque perferendis repellendus dignissimos qui vitae sit!</p>
+            </div>
+
+            <div class="grid-container"></div>
+        </div>
+        <div id="bottomborder">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <script>
+        let allCourses = [];
+        let filter = "all";
+
+        document.addEventListener("DOMContentLoaded", start);
+        console.log("Sitet er loaded")
+
+        function start() {
+            let receiver = document.querySelector(".grid-container");
+
+            async function hentJson() {
+
+                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1IcI5NL9dMmjyScO75bHcjYWEfJm4jHHFQ-iWZwhgdys");
+
+                allCourses = await jsonData.json();
+
+                showCourses();
+            }
+
+            function showCourses() {
+
+                receiver.innerHTML = "";
+
+                console.log("Viser retter");
+
+                allCourses.forEach(course => {
+                    if (filter == "all" || filter == course.kategori) {
+                        let template = `<div class="border"><div class="course_box"><div class="courseimage"><img src="img/${course.billede}.jpg" alt="${course.navn}"></div><div class="coursecontent"><h2>${course.navn}</h2><p>${course.kort}<br></p></div></div></div>`;
+
+                        receiver.insertAdjacentHTML("beforeend", template);
+                        receiver.lastElementChild.addEventListener("click", showSingle);
+
+                        function showSingle() {
+                            document.querySelector("#indhold").innerHTML = `<div class="popup"><img src="img/${course.billede}.jpg" alt="${course.navn}"><h2>${course.navn}</h2><div><p><b>Pris ${course.pris},-</b></p></div><p>${course.kort}</p></div>`;
+
+                            document.querySelector("#popup").style.display = "block";
+                            document.querySelector("#popup #luk").addEventListener("click", close);
+                        }
+
+                        function close() {
+                            document.querySelector("#popup").style.display = "none";
+                        }
+                    }
+                })
+            }
+
+            document.querySelectorAll(".filter").forEach(but => {
+                but.addEventListener("click", filtering);
+            });
+
+            function filtering() {
+                document.querySelectorAll(".filter").forEach(but => {
+                    but.classList.remove("valgt");
+                    console.log("valgt er fjernet");
+                });
+                this.classList.add("valgt");
+
+                document.querySelector(".category_title h1").textContent = this.textContent;
+
+
+                document.querySelector(".category_title h1").style.backgroundImage = "url(img/mobile/" + this.getAttribute('data-jpg') + ".jpg)";
+
+                console.log(this.getAttribute('data-jpg'));
+
+                filter = this.getAttribute("data-category");
+                showCourses();
+            }
+
+            hentJson();
+        }
+    </script>
+</body>
+
+</html>
