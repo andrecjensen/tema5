@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bistro Babushka</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+
+    <style>
+        body {
+            width: 100vw;
+            margin: auto;
+        }
+
+        h2 {
+            font-family: tahoma;
+            font-weight: 700;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+
+            text-align: center;
+        }
+
+        h3 {
+            font-family: tahoma;
+            font-weight: 700;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+
+            text-align: left;
+        }
+
+        p {
+            font-family: 'Sintony', sans-serif;
+            font-size: 0.9em;
+            line-height: 1.8em;
+            color: #626262;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            transition-duration: 0.4s;
+        }
+
+        a:hover {
+            background-color: #e3870a;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .cover {
+            background-color: #ff2020;
+            background-image: url(media/russianarchitechture.jpg);
+            background-blend-mode: screen;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 350px;
+            margin-top: -6vw;
+
+            font-family: 'Russo One', sans-serif;
+            font-size: 2vw;
+            color: #000000;
+            letter-spacing: 5px;
+            line-height: 350px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        #single {
+            max-width: 900px;
+            margin: auto;
+            margin-top: -40px;
+            background-color: white;
+            box-shadow: 0px 0px 8px #9b9b9b;
+            margin-bottom: 25px;
+        }
+
+        #indhold {}
+
+        #indhold h2 {
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 20pt;
+        }
+
+        #indhold p {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .pris {
+            position: relative;
+            top: 1rem;
+            left: 86%;
+
+            background-color: #ff2020;
+            width: 100px;
+            height: 30px;
+            border-radius: 15px;
+        }
+
+        .pris p {
+            line-height: 30px;
+            color: white;
+        }
+
+
+        #tilbage {
+            position: relative;
+            top: -4rem;
+        }
+
+        #tilbage button {
+            color: #ff2020;
+            background-color: white;
+            font-weight: 700;
+            border: none;
+            border-radius: 0px;
+            font-size: 1rem;
+            padding: 0.8rem 1rem;
+        }
+
+        @media only screen and (max-width: 1050px) {
+
+            #single {
+                margin-bottom: 0px;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            .pris {
+                left: 82%;
+            }
+
+            #tilbage {
+                left: 1rem;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            #single {
+                margin-bottom: 0px;
+            }
+
+            .cover {
+                background-color: #ff2020;
+                background-image: url(media/russianarchitechture.jpg);
+                background-blend-mode: screen;
+                background-size: 120%;
+                background-repeat: no-repeat;
+
+            }
+
+            .cover h1 {
+                font-family: 'Russo One', sans-serif;
+                font-size: 35px;
+                color: #000000;
+                letter-spacing: 5px;
+                text-align: center;
+                text-transform: uppercase;
+                line-height: 40px;
+                padding-top: 110px;
+            }
+
+            .pris {
+                left: 70%;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cover">
+        <h1>Bistro Babushka</h1>
+    </div>
+
+    <main id="single">
+        <div id="tilbage">
+            <button> TILBAGE </button>
+        </div>
+        <section id="indhold"></section>
+    </main>
+
+
+    <script>
+        let urlParams = new URLSearchParams(window.location.search)
+        let retId = urlParams.get("id");
+        console.log(retId);
+
+        let alleRetter = [];
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+
+
+            async function hentJson() {
+
+                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+
+                alleRetter = await jsonData.json();
+
+                visRetter();
+            }
+
+            function visRetter() {
+
+                let modtager = document.querySelector("#indhold");
+
+                modtager.innerHTML = "";
+
+                alleRetter.forEach(ret => {
+                    if (retId == ret.id) {
+                        let template = `<div style="padding-top: 10px;"><h2>${ret.navn}</h2><p>Oprindelse: ${ret.oprindelse}.</p></div><div class="pris"><p><b>Pris ${ret.pris},-</b></p></div><img src="imgs/large/${ret.billede}.jpg" alt="${ret.navn}"><div style="padding-bottom: 10px;"><p>${ret.lang}</p></div>`;
+
+                        modtager.insertAdjacentHTML("beforeend", template);
+
+                    }
+                })
+            } // funktion visRetter slutter
+
+            document.querySelector("#tilbage button").addEventListener("click", () => {
+                location.href = "babushka-single.html"
+            });
+
+            hentJson();
+
+        } // Slut på funktionen start
+    </script>
+</body>
+
+</html>
