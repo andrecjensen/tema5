@@ -45,7 +45,7 @@
 
     p {
         font-family: 'Lato', sans-serif;
-        font-size: 10pt;
+        font-size: 12pt;
         color: #272727;
     }
 
@@ -83,7 +83,7 @@
         display: flex;
         position: absolute;
         width: 100%;
-        margin-top: -15px;
+        margin-top: -13px;
     }
 
     #headericons div {
@@ -92,7 +92,7 @@
     }
 
     #headericons img {
-        width: 40px;
+        width: 30px;
     }
 
     #cover {
@@ -115,7 +115,7 @@
 
     /*    Styrer topdelen */
 
-    #topwrapper {}
+
 
     /* MENU */
     #menu {
@@ -124,11 +124,11 @@
     }
 
     #menu button {
-        border: solid;
+        border: none;
         border-width: 0.1px;
         border-color: #f4f4f4;
         height: 50px;
-        color: #ff2020;
+        color: #003D8F;
         cursor: pointer;
         margin: 0;
         padding: 10px 5px;
@@ -140,19 +140,19 @@
 
     #menu button:hover {
         color: white;
-        background-color: #ff2020;
-        border: solid;
+        background-color: #004FB5;
+        border: none;
         border-width: 0.1px;
-        border-color: #ff2020;
+        border-color: #004FB5;
         transition-duration: 0.5s;
     }
 
     #menu .valgt {
         color: white;
-        background-color: #ff2020;
+        background-color: #003D8F;
         border: solid;
         border-width: 0.1px;
-        border-color: #ff2020;
+        border-color: #003D8F;
         transition-duration: 0.5s;
     }
 
@@ -228,9 +228,9 @@
         height: 100vh;
         position: fixed;
         background-color: rgba(0, 0, 0, 0.24);
-                display: none;
+        display: none;
         overflow: scroll;
-        z-index: 1;
+        z-index: 8;
     }
 
     #form {
@@ -239,6 +239,9 @@
         background-color: #ffffff;
         margin: 4rem auto;
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.31);
+
+        border-radius: 5px;
+        overflow: hidden;
     }
 
     #form form {
@@ -248,34 +251,34 @@
     }
 
     input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
         font-family: 'Lato', sans-serif;
         font-size: 10pt;
 
 }
 
     input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
 
         font-family: 'Lato', sans-serif;
         font-size: 10pt;
 }
 
     input[type=submit]:hover {
-  background-color: #45a049;
+        background-color: #45a049;
 }
 
     #lukform {
@@ -299,6 +302,8 @@
         letter-spacing: 0.4pt;
 
         cursor: pointer;
+
+        border-radius: 0 5px 0 0;
     }
 
 /*    Indstillinger til Informationsite */
@@ -311,7 +316,7 @@
         background-color: rgba(0, 0, 0, 0.24);
         display: none;
         overflow: scroll;
-        z-index: 1;
+        z-index: 8;
     }
 
     #infocontent {
@@ -320,22 +325,23 @@
         background-color: #ffffff;
         margin: 4rem auto;
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.31);
+
+        border-radius: 5px;
+        overflow: hidden;
     }
 
     #infocontent div {
         padding: 20px;
     }
 
-    #infocontent h2 {
-        padding-left: 15px;
-        padding-right: 15px;
-        font-size: 20pt;
-
-    }
-
     #infocontent p {
         padding-left: 15px;
         padding-right: 15px;
+    }
+
+    #infocontent iframe {
+        margin-bottom: -4px;
+
     }
 
     #lukinfo {
@@ -359,6 +365,8 @@
         letter-spacing: 0.4pt;
 
         cursor: pointer;
+
+        border-radius: 0 5px 0 0;
     }
 
     /*    Slut på indstillinger til book */
@@ -373,7 +381,7 @@
         background-color: rgba(0, 0, 0, 0.24);
         display: none;
         overflow: scroll;
-        z-index: 1;
+        z-index: 8;
     }
 
     #indhold {
@@ -382,6 +390,9 @@
         background-color: #ffffff;
         margin: 4rem auto;
         box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.31);
+
+        border-radius: 5px;
+        overflow: hidden;
     }
 
     #indhold h2 {
@@ -417,6 +428,8 @@
         letter-spacing: 0.4pt;
 
         cursor: pointer;
+
+        border-radius: 0 5px 0 0;
     }
 
     #course_popup {}
@@ -440,6 +453,20 @@
             font-size: 35pt;
         }
 
+        #infocontent {
+
+            text-align: center;
+        }
+
+        #infocontent img {
+            width: 40%;
+
+        }
+
+        #infocontent p {
+            text-align: left;
+        }
+
 
     }
 
@@ -448,12 +475,16 @@
             height: 20vw;
             background-image: url(logo/a_poco-logo-white.svg);
             background-size: 17vw;
+            margin-top: -82px;
         }
 
         #topwrapper {
             margin-top: -15px;
             background-color: white;
             box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.41);
+            border-radius: 10px;
+            overflow: hidden;
+            z-index: 1;
         }
 
         #menu {
@@ -471,7 +502,24 @@
         }
 
         .explainer {
-            padding-left: 16px;
+            display: block;
+            position: relative;
+            background-color: white;
+            margin-left: 16px;
+            margin-top: -40px;
+            padding: 16px;
+            max-width: 550px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.19);
+            border-radius: 5px;
+            z-index: 2;
+        }
+
+        .explainer h2 {
+            margin: 5px 0;
+        }
+
+        .explainer p {
+            margin-bottom: 0;
         }
 
         .grid-container {
@@ -487,7 +535,6 @@
         }
 
         .course_box {
-
             margin-left: 0;
             margin-right: 0;
             border: none;
@@ -503,6 +550,69 @@
             right: 25vw;
 
         }
+
+         #headerlinks {
+             display: flex;
+             justify-content: flex-end;
+
+             max-width: 1100px;
+             margin: auto;
+             position:relative;
+        }
+
+        #headerlinks button {
+            background-color: var(--main-blue);
+            width: 100px;
+        }
+
+        #headerlinks button:hover {
+            color: white;
+            background-color: #003D8F;
+            border: none;
+            transition-duration: 0.5s;
+        }
+
+        #headericons {
+            display: flex;
+            justify-content: flex-end;
+            max-width: 1100px;
+            margin: -12px auto;
+            position:relative;
+        }
+
+        #headericons div {
+            width: 100px;
+        }
+
+        #headericons img {
+            width: 40px;
+        }
+
+        #infocontent {
+            width: 60vw;
+            text-align: center;
+        }
+
+        #infocontent img {
+            width: 40%;
+
+        }
+
+        #infocontent p {
+            text-align: left;
+        }
+
+        #lukinfo {
+            right: 20vw;
+        }
+
+        #form {
+            width: 40vw;
+        }
+
+        #lukform {
+            right: 30vw;
+        }
     }
 
 
@@ -514,6 +624,7 @@
         width: 100%;
         position: sticky;
         bottom: 0;
+        z-index: 5;
     }
 
     #bottomborder div {
@@ -616,8 +727,10 @@
         </div>
         <div class="contentcontainer">
             <div class="explainer">
-                <h2>Lidt om hvad det er</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, minus quibusdam tempore saepe magnam voluptatum molestiae nulla deserunt temporibus, corporis maxime at consectetur eaque perferendis repellendus dignissimos qui vitae sit!</p>
+                <h2>Manifesto ¡A Poco!</h2>
+                <p>At Eatery Social, fresh ingredients will be prepared with rare spices and genuine craftsmanship. Simple ingredients will be turned into huge flavours and a social way of eating. The menu includes everything from tortillas, tostadas, tacos and ceviches to hearty meat dishes straight from the grill. As is traditional, our dishes will consist of several components – texture will provided by vegetables and flavour by sauces.</p>
+
+                <p>Our menu is complemented by a motley crew of drinks from far and wide. Cocktails, beer and wine will be kept company by a unique collection of tequila and mezcal. Our signature drink will be the classic Margarita.</p>
             </div>
 
             <div class="grid-container"></div>
