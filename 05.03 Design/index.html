@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Poco</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Luckiest+Guy" rel="stylesheet">
+</head>
+
+<style>
+    :root {
+        --main-blue: #005ACF;
+        
+    }
+
+    body {
+        margin: auto;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    h1 {
+        font-family: 'Luckiest Guy', cursive;
+        letter-spacing: 3px;
+        text-align: center;
+        vertical-align: middle;
+        color: white;
+        font-size: 20pt;
+        height: 200px;
+        width: 100%;
+        margin: 0px;
+        line-height: 200px;
+
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    h2 {
+        font-family: 'Lato', sans-serif;
+    }
+
+    p {
+        font-family: 'Lato', sans-serif;
+        font-size: 12pt;
+        color: #272727;
+    }
+
+    /*    Links til book og info */
+
+    #headerlinks {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #headerlinks button {
+        border: none;
+        background-color: #003D8F;
+        height: 50px;
+        color: white;
+        cursor: pointer;
+        margin: 0;
+        padding: 10px 5px;
+        transition-duration: 0.5s;
+
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 10pt;
+    }
+
+    #headerlinks button:hover {
+        color: white;
+        background-color: var(--main-blue);
+        border: none;
+        transition-duration: 0.5s;
+    }
+
+    #headericons {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        margin-top: -13px;
+    }
+
+    #headericons div {
+        width: 100%;
+        text-align: center;
+    }
+
+    #headericons img {
+        width: 30px;
+    }
+
+    #cover {
+        width: 100vw;
+        height: 160px;
+        background-color: var(--main-blue);
+        background-image: url(logo/a_poco-logo-long-white.svg);
+        background-size: 60vw;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    /*    Holder på alt indhold */
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        margin-bottom: 25px;
+    }
+
+
+    /*    Styrer topdelen */
+
+
+
+    /* MENU */
+    #menu {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    #menu button {
+        border: none;
+        border-width: 0.1px;
+        border-color: #f4f4f4;
+        height: 50px;
+        color: #003D8F;
+        cursor: pointer;
+        margin: 0;
+        padding: 10px 5px;
+        transition-duration: 0.5s;
+
+        font-family: 'Lato', sans-serif;
+        letter-spacing: 0.4pt;
+    }
+
+    #menu button:hover {
+        color: white;
+        background-color: #004FB5;
+        border: none;
+        border-width: 0.1px;
+        border-color: #004FB5;
+        transition-duration: 0.5s;
+    }
+
+    #menu .valgt {
+        color: white;
+        background-color: #003D8F;
+        border: solid;
+        border-width: 0.1px;
+        border-color: #003D8F;
+        transition-duration: 0.5s;
+    }
+
+    .category_title h1 {
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* Menu slut */
+
+
+
+    /*    Start på indhold */
+    .contentcontainer {
+        padding: 16px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .course_box {
+        display: flex;
+        flex-wrap: nowrap;
+        cursor: pointer;
+        transition-duration: 0.5s;
+        padding: 20px 16px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-left: -16px;
+        margin-right: -16px;
+
+        border-top: solid;
+        border-width: 0.5px;
+        border-color: #EDEDED;
+    }
+
+    .course_box h2 {
+        margin: 0;
+        font-size: 14pt;
+    }
+
+    .course_box p {
+        margin: 0;
+        font-size: 10pt;
+    }
+
+    .course_box:hover {
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.13);
+
+    }
+
+    .courseimage {
+        margin-bottom: -4px;
+    }
+
+    .courseimage img {
+        width: 140px;
+        margin-right: 15px;
+        border-radius: 5px;
+
+    }
+
+    .coursecontent {}
+
+
+    /*    Indstillinger til book */
+
+    #bookwindow {
+        top: 0px;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.24);
+        display: none;
+        overflow: scroll;
+        z-index: 8;
+    }
+
+    #form {
+        display: block;
+        width: 90vw;
+        background-color: #ffffff;
+        margin: 4rem auto;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.31);
+
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    #form form {
+        padding: 60px 20px;
+        font-family: 'Lato', sans-serif;
+        font-size: 10pt;
+    }
+
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-family: 'Lato', sans-serif;
+        font-size: 10pt;
+
+}
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+
+        font-family: 'Lato', sans-serif;
+        font-size: 10pt;
+}
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+}
+
+    #lukform {
+        display: block;
+        position: absolute;
+        right: 5vw;
+        top: 4rem;
+        z-index: 20;
+    }
+
+    #lukform button {
+        color: white;
+        background-color: #005ACF;
+        border: none;
+        font-weight: 700;
+        border-radius: 0px;
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+
+        font-family: 'Lato', sans-serif;
+        letter-spacing: 0.4pt;
+
+        cursor: pointer;
+
+        border-radius: 0 5px 0 0;
+    }
+
+/*    Indstillinger til Informationsite */
+
+     #infowindow {
+        top: 0px;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.24);
+        display: none;
+        overflow: scroll;
+        z-index: 8;
+    }
+
+    #infocontent {
+        display: block;
+        width: 90vw;
+        background-color: #ffffff;
+        margin: 4rem auto;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.31);
+
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    #infocontent div {
+        padding: 20px;
+    }
+
+    #infocontent p {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    #infocontent iframe {
+        margin-bottom: -4px;
+
+    }
+
+    #lukinfo {
+        display: block;
+        position: absolute;
+        right: 5vw;
+        top: 4rem;
+        z-index: 20;
+    }
+
+    #lukinfo button {
+        color: white;
+        background-color: #005ACF;
+        border: none;
+        font-weight: 700;
+        border-radius: 0px;
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+
+        font-family: 'Lato', sans-serif;
+        letter-spacing: 0.4pt;
+
+        cursor: pointer;
+
+        border-radius: 0 5px 0 0;
+    }
+
+    /*    Slut på indstillinger til book */
+
+    /*    Indstillinger til pop up */
+
+    #popup {
+        top: 0px;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.24);
+        display: none;
+        overflow: scroll;
+        z-index: 8;
+    }
+
+    #indhold {
+        display: block;
+        width: 90vw;
+        background-color: #ffffff;
+        margin: 4rem auto;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.31);
+
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    #indhold h2 {
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: 20pt;
+
+    }
+
+    #indhold p {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    #luk {
+        display: block;
+        position: absolute;
+        right: 5vw;
+        top: 4rem;
+        z-index: 20;
+    }
+
+    #luk button {
+        color: white;
+        background-color: #005ACF;
+        border: none;
+        font-weight: 700;
+        border-radius: 0px;
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+
+        font-family: 'Lato', sans-serif;
+        letter-spacing: 0.4pt;
+
+        cursor: pointer;
+
+        border-radius: 0 5px 0 0;
+    }
+
+    #course_popup {}
+
+    #pris {}
+
+    /*    Slut på indstillinger til pop up */
+    /*    Start på media-query indstillinger */
+
+    @media only screen and (min-width: 600px) {
+        #cover {
+            height: 180px;
+            background-size: 50vw;
+        }
+
+        #menu button {
+            height: 40px;
+        }
+
+        h1 {
+            font-size: 35pt;
+        }
+
+        #infocontent {
+
+            text-align: center;
+        }
+
+        #infocontent img {
+            width: 40%;
+
+        }
+
+        #infocontent p {
+            text-align: left;
+        }
+
+
+    }
+
+    @media only screen and (min-width: 800px) {
+        #cover {
+            height: 20vw;
+            background-image: url(logo/a_poco-logo-white.svg);
+            background-size: 17vw;
+            margin-top: -82px;
+        }
+
+        #topwrapper {
+            margin-top: -15px;
+            background-color: white;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.41);
+            border-radius: 10px;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        #menu {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+        }
+
+        #menu button {
+            height: 40px;
+        }
+
+        .contentcontainer {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .explainer {
+            display: block;
+            position: relative;
+            background-color: white;
+            margin-left: 16px;
+            margin-top: -40px;
+            margin-bottom: 30px;
+            padding: 16px;
+            max-width: 550px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.19);
+            border-radius: 5px;
+            z-index: 2;
+        }
+
+        .explainer h2 {
+            margin: 5px 0;
+        }
+
+        .explainer p {
+            margin-bottom: 0;
+        }
+
+        .grid-container {
+            grid-template-columns: repeat(2, 1fr);
+
+        }
+
+        .border {
+            border-top: solid;
+            border-width: 0.5px;
+            border-color: #EDEDED;
+
+        }
+
+        .course_box {
+            margin-left: 0;
+            margin-right: 0;
+            border: none;
+
+            border-radius: 5px;
+        }
+
+        #indhold {
+            width: 50vw;
+        }
+
+        #luk {
+            right: 25vw;
+
+        }
+
+         #headerlinks {
+             display: flex;
+             justify-content: flex-end;
+
+             max-width: 1100px;
+             margin: auto;
+             position:relative;
+        }
+
+        #headerlinks button {
+            background-color: var(--main-blue);
+            width: 100px;
+        }
+
+        #headerlinks button:hover {
+            color: white;
+            background-color: #003D8F;
+            border: none;
+            transition-duration: 0.5s;
+        }
+
+        #headericons {
+            display: flex;
+            justify-content: flex-end;
+            max-width: 1100px;
+            margin: -12px auto;
+            position:relative;
+        }
+
+        #headericons div {
+            width: 100px;
+        }
+
+        #headericons img {
+            width: 40px;
+        }
+
+        #infocontent {
+            width: 60vw;
+            text-align: center;
+        }
+
+        #infocontent img {
+            width: 40%;
+
+        }
+
+        #infocontent p {
+            text-align: left;
+        }
+
+        #lukinfo {
+            right: 20vw;
+        }
+
+        #form {
+            width: 40vw;
+        }
+
+        #lukform {
+            right: 30vw;
+        }
+    }
+
+
+    /* BOTTOM BORDER */
+    #bottomborder {
+        display: flex;
+        flex-wrap: nowrap;
+        height: 9px;
+        width: 100%;
+        position: sticky;
+        bottom: 0;
+        z-index: 5;
+    }
+
+    #bottomborder div {
+        width: 100%;
+    }
+
+    #bottomborder div:nth-child(1) {
+        background-color: #005ACF;
+    }
+
+    #bottomborder div:nth-child(2) {
+        background-color: #004FB5;
+    }
+
+    #bottomborder div:nth-child(3) {
+        background-color: #005FDC;
+    }
+
+    #bottomborder div:nth-child(4) {
+        background-color: #002250;
+    }
+
+    #bottomborder div:nth-child(5) {
+        background-color: #003D8F;
+    }
+</style>
+
+<body>
+    <div id="bookwindow">
+        <div id="lukform">
+            <button>X</button>
+        </div>
+        <div id="form">
+            <form>
+                <p>Fill out the form below and we will get back to you as soon as possible. Thank you!</p>
+                <input type="text" name="name" placeholder="Full name">
+                <br>
+                <input type="text" name="Number" placeholder="Number of guests">
+                <br>
+                <input type="text" name="date" placeholder="Date of visit">
+                <br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    <div id="infowindow">
+        <div id="lukinfo">
+            <button>X</button>
+        </div>
+        <div id="infocontent">
+            <div>
+                <img src="logo/a_poco-logo-blue.svg" alt="A Poco loco logo">
+                <p>South meets South. At Eatery Social, North, Central and South America meet Södermalm. The restaurant is so much more than a taqueria where hotel guests, Stockholmers and visitors to the city are invited to a social meeting place.</p>
+
+                <p>Creating a social meeting place is our main focus – regardless of whether you’re seated facing the panoramic views across the urban Skanstull Bridges, around our “community tables” or feeling the pulse of Söder in our cocktail bar Vatos (that can be rented for your special ocation).</p>
+
+                <p>Marcus Samuelsson has put his signature on the restaurant and holds the role of creative chef. He has, with his influences and experiences from all over the world, helped to create this social meeting place where food and drink are as important as the atmosphere and the feeling you get.</p>
+            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5615.800438991128!2d12.581339349245887!3d55.683346992081034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4652531845579f65%3A0x1036076b9b1cca42!2sStore+Kongensgade+23%2C+1264+K%C3%B8benhavn!5e0!3m2!1sen!2sdk!4v1551011623795" width="100%" height="300px" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+        </div>
+    </div>
+
+    <div id="popup">
+        <div id="luk">
+            <button>X</button>
+        </div>
+        <div id="indhold"></div>
+    </div>
+
+    <div id="headerlinks">
+        <button id="bookbutton">Book</button>
+        <button id="infobutton">Info</button>
+    </div>
+    <div id="headericons">
+        <div><img src="icon/book-table.svg" alt="Book a table"></div>
+        <div><img src="icon/information.svg" alt="Information"></div>
+    </div>
+
+    <div id="cover">
+        <!-- A POCO COVER -->
+    </div>
+
+    <div class="container">
+        <div id="topwrapper">
+            <div id="menu">
+                <button class="filter valgt" data-category="all" data-jpg="ALL">ALL COURSES</button>
+                <button class="filter" data-category="PLATOS PEQUENOS" data-jpg="PEQUENOS">
+                    PLATOS PEQUENOS</button>
+                <button class="filter" data-category="CEVICHERIA" data-jpg="CEVICHERIA">CEVICHERIA</button>
+                <button class="filter" data-category="TACO Y TOSTADAS" data-jpg="TACO">TACO Y TOSTADAS</button>
+                <button class="filter" data-category="PLATOS DE FONDO" data-jpg="FONDO">PLATOS DE FONDO</button>
+                <button class="filter" data-category="CERVEZA Y MARGARITAS" data-jpg="CERVEZA">CERVEZA Y MARGARITAS</button>
+            </div>
+            <div class="category_title">
+                <h1 style="background-image: url(img/mobile/ALL.jpg);">ALL COURSES</h1>
+
+            </div>
+        </div>
+        <div class="contentcontainer">
+            <div class="explainer">
+                <h2>Manifesto ¡A Poco!</h2>
+                <p>At Eatery Social, fresh ingredients will be prepared with rare spices and genuine craftsmanship. Simple ingredients will be turned into huge flavours and a social way of eating. The menu includes everything from tortillas, tostadas, tacos and ceviches to hearty meat dishes straight from the grill. As is traditional, our dishes will consist of several components – texture will provided by vegetables and flavour by sauces.</p>
+
+                <p>Our menu is complemented by a motley crew of drinks from far and wide. Cocktails, beer and wine will be kept company by a unique collection of tequila and mezcal. Our signature drink will be the classic Margarita.</p>
+            </div>
+
+            <div class="grid-container"></div>
+        </div>
+
+    </div>
+    <div id="bottomborder">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <script>
+        let allCourses = [];
+        let filter = "all";
+
+        document.addEventListener("DOMContentLoaded", start);
+        console.log("Sitet er loaded")
+
+        function start() {
+            let receiver = document.querySelector(".grid-container");
+
+            async function hentJson() {
+
+                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1IcI5NL9dMmjyScO75bHcjYWEfJm4jHHFQ-iWZwhgdys");
+
+                allCourses = await jsonData.json();
+
+                showCourses();
+            }
+
+            function showCourses() {
+
+                receiver.innerHTML = "";
+
+                console.log("Viser retter");
+
+                allCourses.forEach(course => {
+                    if (filter == "all" || filter == course.kategori) {
+                        let template = `<div class="border"><div class="course_box"><div class="courseimage"><img src="img/${course.billede}.jpg" alt="${course.navn}"></div><div class="coursecontent"><h2>${course.navn}</h2><p>${course.kort}<br></p></div></div></div>`;
+
+                        receiver.insertAdjacentHTML("beforeend", template);
+                        receiver.lastElementChild.addEventListener("click", showSingle);
+
+                        function showSingle() {
+                            document.querySelector("#indhold").innerHTML = `<div class="popup"><img src="img/${course.billede}.jpg" alt="${course.navn}"><h2>${course.navn}</h2><div><p><b>Pris ${course.pris},-</b></p></div><p style="padding-bottom: 15px;">${course.kort}</p></div>`;
+
+                            document.querySelector("#popup").style.display = "block";
+                            document.querySelector("#popup #luk").addEventListener("click", close);
+                        }
+
+                        function close() {
+                            document.querySelector("#popup").style.display = "none";
+                        }
+                    }
+                })
+            }
+
+            document.querySelectorAll(".filter").forEach(but => {
+                but.addEventListener("click", filtering);
+            });
+
+            function filtering() {
+                document.querySelectorAll(".filter").forEach(but => {
+                    but.classList.remove("valgt");
+                });
+                this.classList.add("valgt");
+
+                document.querySelector(".category_title h1").textContent = this.textContent;
+
+
+                document.querySelector(".category_title h1").style.backgroundImage = "url(img/mobile/" + this.getAttribute('data-jpg') + ".jpg)";
+
+                console.log(this.getAttribute('data-jpg'));
+
+                filter = this.getAttribute("data-category");
+                showCourses();
+            }
+
+            document.querySelector("#bookbutton").addEventListener("click", showBooking);
+
+            function showBooking() {
+                document.querySelector("#bookwindow").style.display = "block";
+                document.querySelector("#bookwindow #lukform").addEventListener("click", closeBook);
+            }
+
+            function closeBook() {
+                document.querySelector("#bookwindow").style.display = "none";
+            }
+
+            document.querySelector("#infobutton").addEventListener("click", showInfo);
+
+            function showInfo() {
+                document.querySelector("#infowindow").style.display = "block";
+                document.querySelector("#infowindow #lukinfo").addEventListener("click", closeInfo);
+            }
+
+            function closeInfo() {
+                document.querySelector("#infowindow").style.display = "none";
+            }
+
+            hentJson();
+        }
+
+    </script>
+</body>
+
+</html>
