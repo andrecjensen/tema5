@@ -103,6 +103,7 @@
         background-size: 60vw;
         background-repeat: no-repeat;
         background-position: center;
+        cursor: pointer;
     }
 
     /*    Holder på alt indhold */
@@ -112,10 +113,7 @@
         margin-bottom: 25px;
     }
 
-
     /*    Styrer topdelen */
-
-
 
     /* MENU */
     #menu {
@@ -414,7 +412,7 @@
         background-color: rgba(0, 0, 0, 0.24);
         display: none;
         overflow: scroll;
-        z-index: 8;
+        z-index: 10;
     }
 
     #indhold {
@@ -427,12 +425,19 @@
         border-radius: 5px;
         overflow: hidden;
     }
+    
+    #indhold .courseimage {
+        width: 100%;
+        height: 20vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
 
     #indhold h2 {
         padding-left: 15px;
         padding-right: 15px;
         font-size: 20pt;
-
     }
 
     #indhold p {
@@ -464,11 +469,15 @@
 
         border-radius: 0 5px 0 0;
     }
+    
+    #indhold .coursebox {
+    }
 
     #indhold .pris {
         background-color: #159B0A;
         width: 80px;
         margin-left: 15px;
+        margin-top: -30px;
         height: 30px;
         line-height: 30px;
         border-radius: 15px;
@@ -479,14 +488,7 @@
          color: white;
     }
     
-    #indhold .forhold {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
     
-    #indhold .forhold img {
-        width: 20%;
-    }
 
     /*    Slut på indstillinger til pop up */
     /*    Start på media-query indstillinger */
@@ -518,7 +520,10 @@
         #infocontent p {
             text-align: left;
         }
-
+        
+        #indhold .courseimage {
+        height: 40vh;
+        }
 
     }
 
@@ -665,6 +670,39 @@
         #lukform {
             right: 30vw;
         }
+        
+         #indhold .courseimage {
+             height: 40vh;
+        }
+        
+        #indhold .pris {
+            position: absolute;
+            margin-left: 23vw;
+            margin-top: -14px;
+            height: 30px;
+            border-radius: 15px;
+            text-align: center;
+            z-index: 11;
+        }
+        
+        #indhold .pris p {
+            color: white;
+            margin-top: 0px;
+        }
+        
+        #indhold h2 {
+            margin-top: 22px;
+        }
+    
+        #indhold .contentbox {
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.13);
+            margin: -25px 15px 15px 15px;
+            width: 30vw;
+            border-radius: 5px;
+            padding: 5px 5px 0px 5px;
+            background-color: white;
+            z-index: 8;
+        }
     
     }
 
@@ -731,11 +769,11 @@
         <div id="infocontent">
             <div>
                 <img src="logo/a_poco-logo-blue.svg" alt="A Poco loco logo">
-                <p>South meets South. At Eatery Social, North, Central and South America meet Södermalm. The restaurant is so much more than a taqueria where hotel guests, Stockholmers and visitors to the city are invited to a social meeting place.</p>
+                <p>South meets South. At A Poco, North, Central and South America meet Copenhagen. The restaurant is so much more than a taqueria where hotel guests, Copenhageners and visitors to the city are invited to a social meeting place.</p>
 
-                <p>Creating a social meeting place is our main focus – regardless of whether you’re seated facing the panoramic views across the urban Skanstull Bridges, around our “community tables” or feeling the pulse of Söder in our cocktail bar Vatos (that can be rented for your special ocation).</p>
+                <p>Creating a social meeting place is our main focus – regardless of whether you’re seated facing the panoramic views across the urban Nørrebro bridges, around our “community tables” or feeling the pulse of Copenhagen in our cocktail bar Vatos (that can be rented for your special ocation).</p>
 
-                <p>Marcus Samuelsson has put his signature on the restaurant and holds the role of creative chef. He has, with his influences and experiences from all over the world, helped to create this social meeting place where food and drink are as important as the atmosphere and the feeling you get.</p>
+                <p>Marcus Samuelsen has put his signature on the restaurant and holds the role of creative chef. He has, with his influences and experiences from all over the world, helped to create this social meeting place where food and drink are as important as the atmosphere and the feeling you get.</p>
             </div>
             <div id="contact">
                 <div><img src="icon/e-mail.svg" alt="e-mail">
@@ -773,13 +811,13 @@
     <div class="container">
         <div id="topwrapper">
             <div id="menu">
-                <button class="filter valgt" data-category="all" data-jpg="ALL">ALL COURSES</button>
-                <button class="filter" data-category="PLATOS PEQUENOS" data-jpg="PEQUENOS">
+                <button class="filter valgt" data-category="all" data-jpg="ALL" title="Drinks">ALL COURSES</button>
+                <button class="filter" data-category="PLATOS PEQUENOS" data-jpg="PEQUENOS" title="Starters">
                     PLATOS PEQUENOS</button>
-                <button class="filter" data-category="CEVICHERIA" data-jpg="CEVICHERIA">CEVICHERIA</button>
-                <button class="filter" data-category="TACO Y TOSTADAS" data-jpg="TACO">TACO Y TOSTADAS</button>
-                <button class="filter" data-category="PLATOS DE FONDO" data-jpg="FONDO">PLATOS DE FONDO</button>
-                <button class="filter" data-category="CERVEZA Y MARGARITAS" data-jpg="CERVEZA">CERVEZA Y MARGARITAS</button>
+                <button class="filter" data-category="CEVICHERIA" data-jpg="CEVICHERIA" title="Seafood">CEVICHERIA</button>
+                <button class="filter" data-category="TACO Y TOSTADAS" data-jpg="TACO" title="Tacos">TACO Y TOSTADAS</button>
+                <button class="filter" data-category="PLATOS DE FONDO" data-jpg="FONDO" title="Main Courses">PLATOS DE FONDO</button>
+                <button class="filter" data-category="CERVEZA Y MARGARITAS" data-jpg="CERVEZA" title="Drinks">CERVEZA Y MARGARITAS</button>
             </div>
             <div class="category_title">
                 <h1 style="background-image: url(img/mobile/ALL.jpg);">ALL COURSES</h1>
@@ -838,7 +876,7 @@
                         receiver.lastElementChild.addEventListener("click", showSingle);
 
                         function showSingle() {
-                            document.querySelector("#indhold").innerHTML = `<div class="popup"><img src="img/${course.billede}.jpg" alt="${course.navn}"><div class="pris"><p><b>${course.pris} ,-</b></p></div><div class="contentbox"><h2>${course.navn}</h2><p style="padding-bottom: 15px;">${course.lang}</p></div><div class="forhold"><img src="icon/${course.forhold}.svg" alt="${course.forhold}"></div>`;
+                            document.querySelector("#indhold").innerHTML = `<div class="popup"><div class="courseimage" style="background-image: url(img/${course.billede}.jpg)"></div><div class="coursebox"><div class="pris"><p><b>${course.pris} ,-</b></p></div><div class="contentbox"><h2>${course.navn}</h2><p style="padding-bottom: 15px;">${course.lang}</p></div></div>`;
 
                             document.querySelector("#popup").style.display = "block";
                             document.querySelector("#popup #luk").addEventListener("click", close);
@@ -892,6 +930,12 @@
 
             function closeInfo() {
                 document.querySelector("#infowindow").style.display = "none";
+            }
+
+            document.querySelector("#cover").addEventListener("click", reloadPage);
+
+            function reloadPage() {
+                document.location.reload(true);
             }
 
             hentJson();
